@@ -13,7 +13,7 @@
 
 
 /**
- * Content elements
+ * Content Element
  */
 $GLOBALS['TL_LANG']['CTE']['caroufredsel_category'] = 'carouFredSel';
 $GLOBALS['TL_LANG']['CTE']['caroufredsel_start'][0] = 'carouFredSel - Wrapper start';

@@ -1,21 +1,9 @@
 <?php 
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2015 Leo Feyer
- * 
- * @package   carouFredSel
- * @author    Dirk Klemmt
- * @license   MIT/GPL
- * @copyright Dirk Klemmt 2012-2015
- */
-
-
-/**
  * Namespace
  */
-namespace Dirch\carouFredSel;
+namespace Dirch\carouFredSel\Module;
 
 
 /**
@@ -27,7 +15,7 @@ namespace Dirch\carouFredSel;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class ModuleCarouFredSelBackground extends \carouFredSel\ModuleCarouFredSelGallery
+class CarouFredSelBackground extends CarouFredSelGallery
 {
 
 	/**

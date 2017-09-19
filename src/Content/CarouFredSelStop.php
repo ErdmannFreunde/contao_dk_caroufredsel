@@ -1,21 +1,13 @@
 <?php 
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2015 Leo Feyer
- * 
- * @package   carouFredSel
- * @author    Dirk Klemmt
- * @license   MIT/GPL
- * @copyright Dirk Klemmt 2012-2015
- */
-
-
-/**
  * Namespace
  */
-namespace Dirch\carouFredSel;
+namespace Dirch\carouFredSel\Content;
+
+use Contao\BackendTemplate;
+use Contao\ContentElement;
+use Contao\Database;
 
 
 /**
@@ -26,7 +18,7 @@ namespace Dirch\carouFredSel;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class ContentCarouFredSelStop extends \ContentElement
+class CarouFredSelStop extends ContentElement
 {
 
 	/**
@@ -46,7 +38,7 @@ class ContentCarouFredSelStop extends \ContentElement
 			// --- create FE template for carouFredSel stop element using same template as start element
 
 			// search for first visible carouFredSel start element with a position before end element
-			$objStartElement = \Database::getInstance()
+			$objStartElement = Database::getInstance()
 				->prepare("SELECT id, dk_cfsCarouFredSel, dk_cfsHtmlTpl
 						   FROM   tl_content
 						   WHERE  type = 'caroufredsel_start' AND pid = ? AND sorting < ? AND invisible != '1'
@@ -71,13 +63,13 @@ class ContentCarouFredSelStop extends \ContentElement
 			$this->Template->type = $this->type;
 			$this->Template->id = $objStartElement->id;
 
-			$carouFredSel = new CarouFredSel();
+			$carouFredSel = new \Dirch\carouFredSel\CarouFredSel();
 			$carouFredSel->createTemplateDataStopElement($objStartElement->dk_cfsCarouFredSel, $this->Template);
 		}
 		else
 		{
 			$this->strTemplate = 'be_wildcard';
-			$this->Template = new \BackendTemplate($this->strTemplate);
+			$this->Template = new BackendTemplate($this->strTemplate);
 		}
 	}
 }

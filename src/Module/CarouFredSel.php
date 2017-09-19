@@ -1,21 +1,14 @@
 <?php
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2015 Leo Feyer
- * 
- * @package   carouFredSel
- * @author    Dirk Klemmt
- * @license   MIT/GPL
- * @copyright Dirk Klemmt 2012-2015
- */
-
-
-/**
  * Namespace
  */
-namespace Dirch\carouFredSel;
+namespace Dirch\carouFredSel\Module;
+
+use Contao\BackendTemplate;
+use Contao\ContentModel;
+use Contao\FrontendTemplate;
+use Contao\Module;
 
 
 /**
@@ -27,7 +20,7 @@ namespace Dirch\carouFredSel;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class ModuleCarouFredSel extends \Module
+class CarouFredSel extends Module
 {
 
 	/**
@@ -61,7 +54,7 @@ class ModuleCarouFredSel extends \Module
 		if (TL_MODE == 'BE')
 		{
 			// --- create BE template for carouFredSel module
-			$objTemplate = new \BackendTemplate('be_wildcard');
+			$objTemplate = new BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### CAROUFREDSEL MODUL ###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
@@ -98,9 +91,9 @@ class ModuleCarouFredSel extends \Module
 	 */
 	protected function compile()
 	{
-		// --- get content elements
+		// --- get content Element
 		$arrElements = array();
-		$objCte = \ContentModel::findPublishedByPidAndTable($this->dk_cfsCarouFredSel, 'tl_dk_caroufredsel');
+		$objCte = ContentModel::findPublishedByPidAndTable($this->dk_cfsCarouFredSel, 'tl_dk_caroufredsel');
 		if ($objCte !== null)
 		{
 			while ($objCte->next())
@@ -112,16 +105,16 @@ class ModuleCarouFredSel extends \Module
 		$this->Template->elements = $arrElements;
 
 		// --- create FE template for css
-		$objTemplateCss = new \FrontendTemplate($this->strTemplateCss);
+		$objTemplateCss = new FrontendTemplate($this->strTemplateCss);
 		$objTemplateCss->id = $this->id;
 
 		// --- create FE template for javascript caller
-		$objTemplateJs = new \FrontendTemplate($this->strTemplateJs);
+		$objTemplateJs = new FrontendTemplate($this->strTemplateJs);
 	
 		// (unique) Element id will be used for unique HTML id element
 		$objTemplateJs->id = $this->id;
 	
-		$carouFredSel = new CarouFredSel();
+		$carouFredSel = new \Dirch\carouFredSel\CarouFredSel();
 		$carouFredSel->createTemplateData($this->dk_cfsCarouFredSel, $this->type, $this->Template, $objTemplateCss, $objTemplateJs);
 	}
 }

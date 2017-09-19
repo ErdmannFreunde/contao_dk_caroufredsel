@@ -1,21 +1,13 @@
 <?php 
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2015 Leo Feyer
- * 
- * @package   carouFredSel
- * @author    Dirk Klemmt
- * @license   MIT/GPL
- * @copyright Dirk Klemmt 2012-2015
- */
-
-
-/**
  * Namespace
  */
 namespace Dirch\carouFredSel;
+
+use Contao\Frontend;
+use Contao\Template;
+use Dirch\carouFredSel\Model;
 
 
 /**
@@ -26,12 +18,12 @@ namespace Dirch\carouFredSel;
  * @license   MIT/GPL
  * @copyright Dirk Klemmt 2012-2015
  */
-class CarouFredSel extends \Frontend 
+class CarouFredSel extends Frontend
 {
 
-	public function createTemplateData($carouFredSelId, $strCarouFredSelType, \Template $objTemplateHtml, \Template $objTemplateCss, \Template $objTemplateJs)
+	public function createTemplateData($carouFredSelId, $strCarouFredSelType, Template $objTemplateHtml, Template $objTemplateCss, Template $objTemplateJs)
 	{
-		$objCarouFredSel = CarouFredSelModel::findByPk($carouFredSelId);
+		$objCarouFredSel = Model\CarouFredSel::findByPk($carouFredSelId);
 		if ($objCarouFredSel === null)
 		{
 			return;
@@ -538,7 +530,7 @@ class CarouFredSel extends \Frontend
 
 	public function createTemplateDataStopElement($carouFredSelId, \Template $objTemplateHtml)
 	{
-		$objCarouFredSel = CarouFredSelModel::findByPk($carouFredSelId);
+		$objCarouFredSel = Model\CarouFredSel::findByPk($carouFredSelId);
 		if ($objCarouFredSel === null)
 		{
 			return;
