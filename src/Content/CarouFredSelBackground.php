@@ -15,7 +15,7 @@ namespace Dirch\carouFredSel\Content;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class CarouFredSelBackground extends ContentCarouFredSelGallery
+class CarouFredSelBackground extends CarouFredSelGallery
 {
 
 	/**
