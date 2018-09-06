@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /**
  * Contao Open Source CMS
- * 
+ *
  * Copyright (C) 2005-2015 Leo Feyer
- * 
+ *
  * @package   carouFredSel
  * @author    Dirk Klemmt
  * @license   MIT/GPL
@@ -36,7 +36,7 @@ switch ($GLOBALS['TL_CONFIG']['dk_cfsUsageMode'])
 
 
 /**
- * Table tl_dk_caroufredsel 
+ * Table tl_dk_caroufredsel
  */
 $GLOBALS['TL_DCA']['tl_dk_caroufredsel'] = array
 (
@@ -198,7 +198,7 @@ $GLOBALS['TL_DCA']['tl_dk_caroufredsel'] = array
 			'label'				=> &$GLOBALS['TL_LANG']['tl_dk_caroufredsel']['scrollItems'],
 			'exclude'			=> true,
 			'inputType'			=> 'text',
-			'eval'				=> array('maxlength' => 5, 'rgxp' => 'digit'),
+			'eval'				=> array('maxlength' => 5, 'rgxp' => 'digit', 'tl_class' => 'clr'),
 			'sql'				=> "smallint(5) unsigned NOT NULL default '0'"
 		),
 		'scrollQueue' => array
@@ -310,7 +310,7 @@ $GLOBALS['TL_DCA']['tl_dk_caroufredsel'] = array
 			'label'				=> &$GLOBALS['TL_LANG']['tl_dk_caroufredsel']['scrollDuration'],
 			'exclude'			=> true,
 			'inputType'			=> 'text',
-			'eval'				=> array('maxlength' => 10, 'rgxp' => 'digit'),
+			'eval'				=> array('maxlength' => 10, 'rgxp' => 'digit', 'tl_class' => 'clr'),
 			'sql'				=> "int(10) NOT NULL default '500'"
 		),
 
@@ -623,7 +623,7 @@ class tl_dk_caroufredsel extends Backend
 				Message::addInfo('Die Erweiterung ist so konfiguriert, daß die am häufigsten verwendeten Einstellungen zur Verfügung stehen. Um alle Einstellungen zu nutzen, können Sie diese in den Contao-Einstellungen aktivieren.');
 				$subsubpaletteAutoPlay = 'autoPlay,autoTimeoutDuration,scrollPauseOnHover';
 				break;
-		
+
 			case 'advanced':
 				$subsubpaletteAutoPlay = 'autoPlay,autoTimeoutDuration,autoDelay,scrollPauseOnHover,autoProgress';
 				break;
@@ -645,7 +645,7 @@ class tl_dk_caroufredsel extends Backend
 		 * Unfortunately a checkbox triggering a subpalette in a subpalette triggered by a checkbox is not possible.
 		 * Thus there is need for a small workaround:
 		 * - grab the data of the inner checkbox
-		 * - if it's selected show the fields (which normally should have been shown due to contao palette switch) 
+		 * - if it's selected show the fields (which normally should have been shown due to contao palette switch)
 		 */
 		if ($obj->autoPlay)
 		{
@@ -714,8 +714,8 @@ class tl_dk_caroufredsel extends Backend
 			$GLOBALS['TL_DCA']['tl_dk_caroufredsel']['subpalettes']['useItemsGeneral'] = str_replace('itemsStartSelect', 'itemsStartSelect,itemsStart', $GLOBALS['TL_DCA']['tl_dk_caroufredsel']['subpalettes']['useItemsGeneral']);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Return all possible horizontal size options as array
 	 *
