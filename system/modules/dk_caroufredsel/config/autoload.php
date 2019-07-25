@@ -45,6 +45,7 @@ ClassLoader::addClasses(array
 	'Dirch\carouFredSel\ModuleCarouFredSelTicker' => 'system/modules/dk_caroufredsel/modules/ModuleCarouFredSelTicker.php'
 ));
 
+/**
  * Register the templates
  */
 TemplateLoader::addFiles(array
