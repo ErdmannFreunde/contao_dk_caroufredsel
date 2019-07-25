@@ -32,26 +32,26 @@ array_insert($GLOBALS['BE_MOD'], 3, array
  * Front end modules
  */
 $GLOBALS['FE_MOD']['caroufredsel_category'] = array(
-	'caroufredsel' => 'Dirch\carouFredSel\Module\CarouFredSel',
-	'caroufredsel_gallery' => 'Dirch\carouFredSel\Module\CarouFredSelGallery',
-	'caroufredsel_background' => 'Dirch\carouFredSel\Module\CarouFredSelBackground',
-	'caroufredsel_ticker' => 'Dirch\carouFredSel\Module\CarouFredSelTicker'
+	'caroufredsel' => 'carouFredSel\ModuleCarouFredSel',
+	'caroufredsel_gallery' => 'carouFredSel\ModuleCarouFredSelGallery',
+	'caroufredsel_background' => 'carouFredSel\ModuleCarouFredSelBackground',
+	'caroufredsel_ticker' => 'carouFredSel\ModuleCarouFredSelTicker'
 );
 
 
 /**
- * Content Element
+ * Content elements
  */
 $GLOBALS['TL_CTE']['caroufredsel_category'] = array(
-	'caroufredsel_gallery' => 'Dirch\carouFredSel\Content\CarouFredSelGallery',
-	'caroufredsel_background' => 'Dirch\carouFredSel\Content\CarouFredSelBackground',
-	'caroufredsel_start' => 'Dirch\carouFredSel\Content\CarouFredSelStart',
-	'caroufredsel_stop' => 'Dirch\carouFredSel\Content\CarouFredSelStop'
+	'caroufredsel_gallery' => 'carouFredSel\ContentCarouFredSelGallery',
+	'caroufredsel_background' => 'carouFredSel\ContentCarouFredSelBackground',
+	'caroufredsel_start' => 'carouFredSel\ContentCarouFredSelStart',
+	'caroufredsel_stop' => 'carouFredSel\ContentCarouFredSelStop'
 );
 
 
 /**
- * Wrapper Element
+ * Wrapper elements
  */
 $GLOBALS['TL_WRAPPERS']['start'][] = 'caroufredsel_start';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'caroufredsel_stop';
@@ -60,4 +60,4 @@ $GLOBALS['TL_WRAPPERS']['stop'][] = 'caroufredsel_stop';
 /**
  * Models
  */
-$GLOBALS['TL_MODELS']['tl_dk_caroufredsel'] = 'Dirch\carouFredSel\Model\CarouFredSel';
+$GLOBALS['TL_MODELS']['tl_dk_caroufredsel'] = 'carouFredSel\CarouFredSelModel';

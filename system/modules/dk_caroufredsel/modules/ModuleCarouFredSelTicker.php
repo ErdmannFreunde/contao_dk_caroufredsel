@@ -1,12 +1,21 @@
 <?php
 
 /**
+ * Contao Open Source CMS
+ * 
+ * Copyright (C) 2005-2015 Leo Feyer
+ * 
+ * @package   carouFredSel
+ * @author    Dirk Klemmt
+ * @license   MIT/GPL
+ * @copyright Dirk Klemmt 2012-2015
+ */
+
+
+/**
  * Namespace
  */
-namespace Dirch\carouFredSel\Module;
-
-use Contao\BackendTemplate;
-use Contao\ModuleNewsList;
+namespace Dirch\carouFredSel;
 
 
 /**
@@ -16,7 +25,7 @@ use Contao\ModuleNewsList;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class CarouFredSelTicker extends ModuleNewsList
+class ModuleCarouFredSelTicker extends \ModuleNewsList
 {
 
 	/**
@@ -50,7 +59,7 @@ class CarouFredSelTicker extends ModuleNewsList
 		if (TL_MODE == 'BE')
 		{
 			// --- create BE template for carouFredSel newsticker module
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### CAROUFREDSEL NEWSTICKER ###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
@@ -99,7 +108,7 @@ class CarouFredSelTicker extends ModuleNewsList
 		// (unique) Element id will be used for unique HTML id element
 		$objTemplateJs->id = $this->id;
 	
-		$carouFredSel = new \Dirch\carouFredSel\CarouFredSel();
+		$carouFredSel = new CarouFredSel();
 		$carouFredSel->createTemplateData($this->dk_cfsCarouFredSel, $this->type, $this->Template, $objTemplateCss, $objTemplateJs);
 	}
 }

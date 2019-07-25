@@ -1,15 +1,21 @@
 <?php 
 
 /**
+ * Contao Open Source CMS
+ * 
+ * Copyright (C) 2005-2015 Leo Feyer
+ * 
+ * @package   carouFredSel
+ * @author    Dirk Klemmt
+ * @license   MIT/GPL
+ * @copyright Dirk Klemmt 2012-2015
+ */
+
+
+/**
  * Namespace
  */
-namespace Dirch\carouFredSel\Content;
-
-use Contao\BackendTemplate;
-use Contao\ContentElement;
-use Contao\File;
-use Contao\FilesModel;
-use Contao\FrontendTemplate;
+namespace Dirch\carouFredSel;
 
 
 /**
@@ -21,7 +27,7 @@ use Contao\FrontendTemplate;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class CarouFredSelGallery extends ContentElement
+class ContentCarouFredSelGallery extends \ContentElement
 {
 
 	/**
@@ -75,7 +81,7 @@ class CarouFredSelGallery extends ContentElement
 		}
 
 		// Get the file entries from the database
-		$this->objFiles = FilesModel::findMultipleByUuids($this->multiSRC);
+		$this->objFiles = \FilesModel::findMultipleByUuids($this->multiSRC);
 
 		if ($this->objFiles === null)
 		{
@@ -127,7 +133,7 @@ class CarouFredSelGallery extends ContentElement
 			// Single files
 			if ($objFiles->type == 'file')
 			{
-				$objFile = new File($objFiles->path, true);
+				$objFile = new \File($objFiles->path, true);
 
 				if (!$objFile->isGdImage)
 				{
@@ -160,7 +166,7 @@ class CarouFredSelGallery extends ContentElement
 			// Folders
 			else
 			{
-				$objSubfiles = FilesModel::findByPid($objFiles->uuid);
+				$objSubfiles = \FilesModel::findByPid($objFiles->uuid);
 
 				if ($objSubfiles === null)
 				{
@@ -175,7 +181,7 @@ class CarouFredSelGallery extends ContentElement
 						continue;
 					}
 
-					$objFile = new File($objSubfiles->path, true);
+					$objFile = new \File($objSubfiles->path, true);
 
 					if (!$objFile->isGdImage)
 					{
@@ -238,7 +244,7 @@ class CarouFredSelGallery extends ContentElement
 						// Remove all values
 						$arrOrder = array_map(function(){}, array_flip($tmp));
 
-						// Move the matching Element to their position in $arrOrder
+						// Move the matching elements to their position in $arrOrder
 						foreach ($images as $k=>$v)
 						{
 							if (array_key_exists($v['uuid'], $arrOrder))
@@ -406,7 +412,7 @@ class CarouFredSelGallery extends ContentElement
 			// --- create FE template for thumbnails
 			if ($this->dk_cfsUseThumbnails)
 			{
-				$objTemplateThumbnails = new FrontendTemplate("caroufredsel_thumbnails");
+				$objTemplateThumbnails = new \FrontendTemplate("caroufredsel_thumbnails");
 				$objTemplateThumbnails->id = $this->id;
 				$objTemplateThumbnails->bodyThumbnails = $bodyThumbnails;
 
@@ -414,11 +420,11 @@ class CarouFredSelGallery extends ContentElement
 			}
 	
 			// --- create FE template for CSS
-			$objTemplateCss = new FrontendTemplate($this->strTemplateCss);
+			$objTemplateCss = new \FrontendTemplate($this->strTemplateCss);
 			$objTemplateCss->id = $this->id;
 	
 			// --- create FE template for javascript caller
-			$objTemplateJs = new FrontendTemplate($this->strTemplateJs);
+			$objTemplateJs = new \FrontendTemplate($this->strTemplateJs);
 		
 			// (unique) Element id will be used for unique HTML id element
 			$objTemplateJs->id = $this->id;
@@ -489,13 +495,13 @@ class CarouFredSelGallery extends ContentElement
 				$objTemplateJs->synchronise = $this->dk_cfsSynchronise;
 			}
 	
-			$carouFredSel = new \Dirch\carouFredSel\CarouFredSel();
+			$carouFredSel = new CarouFredSel();
 			$carouFredSel->createTemplateData($this->dk_cfsCarouFredSel, $this->type, $this->Template, $objTemplateCss, $objTemplateJs);
 		}
 		else
 		{
 			$this->strTemplate = 'be_caroufredsel';
-			$this->Template = new BackendTemplate($this->strTemplate);
+			$this->Template = new \BackendTemplate($this->strTemplate);
 /*			$this->Template->wildcard = 'carouFredSel - Gallery (' . count($images) . ' images';
 			if ($this->dk_cfsUseThumbnails)
 			{
