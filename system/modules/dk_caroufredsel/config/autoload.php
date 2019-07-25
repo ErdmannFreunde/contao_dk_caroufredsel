@@ -36,7 +36,7 @@ ClassLoader::addClasses(array
 	'Dirch\carouFredSel\ContentCarouFredSelBackground' => 'system/modules/dk_caroufredsel/elements/ContentCarouFredSelBackground.php',
 
 	// Models
-	'Dirch\carouFredSel\CarouFredSelModel' => 'system/modules/dk_caroufredsel/models/CarouFredSelModel.php',
+	'Dirch\carouFredSel\CarouFredSelModel' => 's2015ystem/modules/dk_caroufredsel/models/CarouFredSelModel.php',
 
 	// Modules
 	'Dirch\carouFredSel\ModuleCarouFredSel'=> 'system/modules/dk_caroufredsel/modules/ModuleCarouFredSel.php',
@@ -45,13 +45,14 @@ ClassLoader::addClasses(array
 	'Dirch\carouFredSel\ModuleCarouFredSelTicker' => 'system/modules/dk_caroufredsel/modules/ModuleCarouFredSelTicker.php'
 ));
 
+
 /**
  * Register the templates
  */
 TemplateLoader::addFiles(array
 (
 	'be_caroufredsel' => 'system/modules/dk_caroufredsel/templates/backend',
-	'ce_caroufredsel' => 'system/modules/dk_caroufredsel/templates/Element',
+	'ce_caroufredsel' => 'system/modules/dk_caroufredsel/templates/elements',
 	'caroufredsel_gallery' => 'system/modules/dk_caroufredsel/templates/gallery',
 	'caroufredsel_thumbnails' => 'system/modules/dk_caroufredsel/templates/gallery',
 	'js_caroufredsel' => 'system/modules/dk_caroufredsel/templates/jquery',

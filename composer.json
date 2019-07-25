@@ -1,5 +1,5 @@
 {
-	"name": "mindbird/contao_dk_caroufredsel",
+	"name": "dklemmt/contao_dk_caroufredsel",
 	"description": "Implementation of carouFredSel as extension for Contao Open Source CMS",
 	"keywords": ["contao", "jquery", "carousel", "slider", "slideshow", "gallery", "background", "newsticker"],
 	"type": "contao-module",
@@ -19,16 +19,12 @@
 		"source": "https://github.com/dklemmt/contao_dk_caroufredsel"
 	},
 	"require": {
-		"contao/core-bundle": "~4.0",
-		"contao-community-alliance/composer-plugin": "~3.0"
+		"php": ">=5.3",
+		"contao/core-bundle": "~3.2 || ~4.0",
+		"contao-community-alliance/composer-plugin": "~2.4 || ~3.0"
 	},
 	"replace": {
 		"contao-legacy/dk_caroufredsel": "*"
-	},
-	"autoload": {
-		"psr-4": {
-			"Dirch\\carouFredSel\\": "src/"
-		}
 	},
 	"extra": {
 		"contao": {

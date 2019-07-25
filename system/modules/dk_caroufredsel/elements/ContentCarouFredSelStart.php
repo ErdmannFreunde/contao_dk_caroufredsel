@@ -1,13 +1,21 @@
 <?php 
 
 /**
+ * Contao Open Source CMS
+ * 
+ * Copyright (C) 2005-2015 Leo Feyer
+ * 
+ * @package   carouFredSel
+ * @author    Dirk Klemmt
+ * @license   MIT/GPL
+ * @copyright Dirk Klemmt 2012-2015
+ */
+
+
+/**
  * Namespace
  */
-namespace Dirch\carouFredSel\Content;
-
-use Contao\BackendTemplate;
-use Contao\ContentElement;
-use Contao\FrontendTemplate;
+namespace Dirch\carouFredSel;
 
 
 /**
@@ -18,7 +26,7 @@ use Contao\FrontendTemplate;
  * @author     Dirk Klemmt
  * @package    carouFredSel
  */
-class CarouFredSelStart extends ContentElement
+class ContentCarouFredSelStart extends \ContentElement
 {
 
 	/**
@@ -77,30 +85,30 @@ class CarouFredSelStart extends ContentElement
 		if (TL_MODE == 'FE')
 		{
 			// --- create FE template for carouFredSel element
-			$this->Template = new FrontendTemplate($this->strTemplate);
+			$this->Template = new \FrontendTemplate($this->strTemplate);
 			$this->Template->setData($this->arrData);
 			$this->Template->id = $this->id;
 
 			// --- create FE template for CSS
-			$objTemplateCss = new FrontendTemplate($this->strTemplateCss);
+			$objTemplateCss = new \FrontendTemplate($this->strTemplateCss);
 			$objTemplateCss->id = $this->id;
 			$objTemplateCss->cssIDOnly = $this->cssID[0];
 
 			// --- create FE template for javascript caller
-			$objTemplateJs = new FrontendTemplate($this->strTemplateJs);
+			$objTemplateJs = new \FrontendTemplate($this->strTemplateJs);
 			$objTemplateJs->id = $this->id;
 			if (isset($this->dk_cfsSynchronise) && $this->dk_cfsSynchronise != '')
 			{
 				$objTemplateJs->synchronise = $this->dk_cfsSynchronise;
 			}
 
-			$carouFredSel = new \Dirch\carouFredSel\CarouFredSel();
+			$carouFredSel = new CarouFredSel();
 			$carouFredSel->createTemplateData($this->dk_cfsCarouFredSel, $this->type, $this->Template, $objTemplateCss, $objTemplateJs);
 		}
 		else
 		{
 			$this->strTemplate = 'be_wildcard';
-			$this->Template = new BackendTemplate($this->strTemplate);
+			$this->Template = new \BackendTemplate($this->strTemplate);
 			$this->Template->title = $this->headline;
 		}
 	}
